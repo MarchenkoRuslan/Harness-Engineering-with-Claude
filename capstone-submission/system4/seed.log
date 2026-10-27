@@ -1,0 +1,4 @@
+System 4 warm-tier seed + SQL evidence | C:\Users\ruslan.marchanka\Desktop\Udacity project\Build a Multi-Shift Quality Monitoring System with Claude Orchestration\04-fork-scratchpad\solution | Python 3.14 | 2026-10-27T14:19:55.1459493+02:00
+warm_total=40 filtered_since_apr1=17
+explain_query_plan=[(5, 0, 204, 'SEARCH defects USING INDEX idx_defects_ts (ts>?)')]
+exit code: 0

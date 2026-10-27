@@ -1,0 +1,3 @@
+hot_state_bytes=965
+budget_bytes=5120
+scratchpad_lines=1
