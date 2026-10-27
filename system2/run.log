@@ -1,0 +1,49 @@
+System 2 live run | C:\Users\ruslan.marchanka\Desktop\Udacity project\Engineer a Long-Conversation Context Strategy for a Retail Support Copilot\04-assemble-and-locate\solution | model=claude-haiku-4-5-20251001 | 2026-10-27T15:17:18.7238580+02:00
+run_id: 20261027-151722  (writing to runs\20261027-151722)
+
+[1/3] loading transcript + computing baseline token count
+      baseline transcript tokens: 38708
+[2/3] extracting case facts (LLM call)
+[3/3] compressing resolved segments (LLM calls)
+      resolved/refund: in=12334 out=357
+      resolved/subscription: in=11475 out=417
+
+      assembled tokens: 16775  (56.66% reduction)
+        case_facts                            204
+        resolved_refund                       370
+        resolved_subscription                 430
+        active                              15789
+
+[eval] running 6 questions against compressed context
+      PASS  Q1  What was the actual refund amount processed for order ORD-77310?
+            answer: According to the case facts provided, the refund amount processed for order ORD-77310 was **$22.14**.
+
+This refund was f
+      PASS  Q2  Why did the customer cancel their subscription?
+            answer: According to the case facts provided, the customer's subscription (SUB-22119) was cancelled due to a **duplicate charge*
+      PASS  Q3  What is the failure code on the current payment-method update?
+            answer: According to the case facts provided, the failure code on the current payment-method update is **AVS_MISMATCH**.
+
+This w
+      PASS  Q4  What is the last-4 of the new card the customer is trying to add?
+            answer: The last-4 of the new card the customer is trying to add is **7782**.
+
+This is a Visa card with an expiration date of Se
+      PASS  Q5  Did the customer receive their subscription proration refund?
+            answer: According to the case context, **yes, the customer received their subscription proration refund**.
+
+**Key details:**
+- T
+      PASS  Q6  What is the structured status of the payment-method update issue (use the exact status token from the case record, not a paraphrase)?
+            answer: Based on the case facts provided at the beginning of the conversation, the structured status of the payment-method updat
+      => 6/6 passed
+
+[eval-control] running case-facts-stripped variant against Q1, Q6
+      PASS  Q1  (held without case facts)
+            answer: According to the context provided, a refund of **$22.14** was processed to the customer's Visa card for the damaged item
+      FAIL  Q6  (regressed)
+            answer: Based on the conversation context provided, there is no case record status token explicitly stated for the payment-metho
+      => 1/2 control questions regressed (≥1 required)
+
+done. artifacts in: runs\20261027-151722
+exit code: 0
