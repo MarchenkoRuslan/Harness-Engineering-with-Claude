@@ -1,5 +1,22 @@
 # Claude AI Engineer — Harness Engineering
 
+## Capstone Submission — Ruslan Marchanka
+
+**Start here: [Completed Reflection Brief](reflection-brief.md).** This is the single submitted brief, not the unfilled course template. It answers all 20 questions using the run artifacts below; the reference implementations remain unchanged.
+
+Reviewer navigation: [Agentic Loop](reflection-brief.md#system-1--agentic-loop), [Orchestration](reflection-brief.md#system-4--orchestration), [Context Strategy](reflection-brief.md#system-2--context-strategy), [Claude Code Configuration](reflection-brief.md#system-3--claude-code-config), [Verification](reflection-brief.md#verification), and [Synthesis](reflection-brief.md#part-2--synthesis).
+
+| System | Test Evidence | Run Evidence |
+|---|---|---|
+| 1 — Agentic loop | [30 passed](system1/pytest.log) | [8-fixture summary](system1/runs/20261027_151442/summary.md), [tool-use/termination trace](system1/runs/20261027_151442/traces/claim_04_neighbor_injury.jsonl) |
+| 2 — Context strategy | [30 passed](system2/pytest.log) | [56.66% reduction](system2/runs/20261027-151722/budget.json), [evaluation](system2/runs/20261027-151722/eval.jsonl), [control](system2/runs/20261027-151722/eval_control.jsonl) |
+| 3 — Claude Code config | [35 passed](system3/pytest.log) | [Validator OK](system3/validator.log), [validated configuration](system3/config/CLAUDE.md) |
+| 4 — Orchestration | [33 passed](system4/pytest.log) | [17 of 40 defects selected](system4/seed.log), [recorded-response shift](system4/run_shift.log), [965-byte hot state](system4/state_metrics.txt) |
+
+The brief records observed limitations: System 1 routed 2 claims and escalated 6 rather than matching the course example; System 2's substring-based evaluator marked a contradictory Q5 answer as passing. Fork isolation and recovery are supported by the System 4 tests, not claimed as live investigations.
+
+## Course Materials
+
 Source-of-truth repository for the exercises in the **Claude AI Engineer: Harness Engineering** course (`cd15315`). The course teaches the engineering around a Claude agent — the loop that drives it, the state and context strategies that keep it tractable over long runs, the orchestration that coordinates multiple invocations, and the Claude Code configuration a team works inside.
 
 Each top-level folder is a self-contained course/project with a sequence of hands-on, test-driven exercises. Most exercises ship a `starter/` you fill in and a `solution/` reference, with the acceptance criteria pinned down by a pytest suite (or, for the Claude Code project, a validator).
